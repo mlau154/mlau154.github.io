@@ -6,10 +6,10 @@
         <style>
 
             .tabLink {
-                background-color: mintcream;
-                color: navy;
+                background-color: white;
+                color: black;
                 border: none;
-                outline: none;
+                outline: "none";
                 cursor: pointer;
                 padding: 10px 10px;
                 font-size: 20px;
@@ -18,6 +18,7 @@
 
             .tabLink:hover {
                 background-color: burlywood;
+                transition: 0.7s;
             }
 
             .tabContent {
@@ -25,6 +26,33 @@
                 display: none;
                 padding: 30px 50px;
                 text-align: left;
+            }
+
+            .column {
+                float: left;
+                width: 48.0%;
+                padding: 5px;
+            }
+
+            /* Clearfix (clear floats) */
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            figure {
+                border: 1px #cccccc solid;
+                padding: 4px;
+                margin: auto;
+            }
+
+            figcaption {
+                background-color: antiquewhite;
+                color: black;
+                font-style: italic;
+                padding: 2px;
+                text-align: center;
             }
 
             #Home
@@ -37,6 +65,7 @@
             html {padding-top: 10px;}
             body {max-width: 1200px; margin: 0 auto !important; float: none !important; text-align: center;}
             ul li {padding: 5px 0px;}
+
         </style>
     </head>
     <body>
@@ -64,7 +93,40 @@
         </div>
 
         <div id="Research" class="tabContent">
-            <h2>This is some of my research.</h2>
+            <h1>Research</h1>
+
+            <h2>Aeropropulsive Shape Optimization</h2>
+            <p>To leverage the full aerodynamic benefit of propulsion integration, a coupled aerodynamics-propulsion system optimization can be performed.
+                In this study, both the aerodynamic drag and the mechanical flow power were used as performance characteristics to be minimized.
+            </p>
+
+            <div class="row">
+                <div class="column">
+                    <figure>
+                        <img src="images/field_0_M_w50-50.png" alt="Baseline airfoil-propulsor system" style="width:100%;">
+                        <figcaption>Baseline airfoil-propulsor system</figcaption>
+                    </figure>
+                </div>
+                <div class="column">
+                    <figure>
+                        <img src="images/field_500_M_w50-50.png" alt="Optimized airfoil-propulsion system" style="width:100%;">
+                        <figcaption>Optimized airfoil-propulsor system</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <h2>Aerodynamic Tool Design</h2>
+            <p>To facilitate fast changes to geometric parametrizations of multi-element airfoil systems, <a href="https://pymead.readthedocs.io/en/latest/">pymead</a> was created.
+            This tool allows for direct interaction with Bézier control points that define the airfoil systems. Equations can be added to create inter- and intra-airfoil constraints,
+            and these equations are linked dynamically in the GUI to the airfoil visualizer. This tool also has built-in support for both XFOIL and MSES, with aerodynamic analyses able to be run
+            with just a couple clicks or a keyboard shortcut. A genetic-algorithm-based optimization scheme is another feature in pymead that allows for design improvements
+            with no intermediate user action required.</p>
+
+            <figure>
+                <img src="images/pymead_capture1.PNG" alt="pymead" style="width:80%">
+                <figcaption>Screenshot of an aeropropulsive optimization running in pymead</figcaption>
+            </figure>
+            
         </div>
 
         <div id="Publications" class="tabContent">
