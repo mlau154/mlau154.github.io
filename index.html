@@ -3,6 +3,7 @@
     <head>
         <title>Matt Lauer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="JavaScript" type="text/javascript" src="./js/jquery-3.7.1.min.js"></script>
         <style>
 
             .tabLink {
@@ -26,6 +27,11 @@
                 display: none;
                 padding: 30px 50px;
                 text-align: left;
+            }
+
+            .tabContent:target {
+                display: block;
+                position: inherit;
             }
 
             .column {
@@ -73,16 +79,17 @@
         <hr>
         <button class="tabLink" onclick="openHeaderTab('Home', this)" id="defaultOpen">Home</button>
         <button class="tabLink" onclick="openHeaderTab('Research', this)">Research</button>
-        <button class="tabLink" onclick="openHeaderTab('Publications', this)">Publications</button>
+        <button class="tabLink" onclick="openHeaderTab('Publications', this)" id="tabPublications">Publications</button>
         <button class="tabLink" onclick="openHeaderTab('Repositories', this)">Repositories</button>
         <button class="tabLink" onclick="openHeaderTab('CV', this)">CV</button>
+        <button class="tabLink" onclick="openHeaderTab('Personal', this)">Personal</button>
         <hr>
 
         <div id="Home" class="tabContent">
             <h1>Biography</h1>
             <p>Matt Lauer is a Ph.D. student in the Department of Aerospace Engineering under Dr. Phillip Ansell at the University of Illinois Urbana-Champaign. 
                 Matt's research has focused on leveraging aerodynamic and aeropropulsive benefits enabled by hydrogen-electric aircraft configurations, 
-                in particular on NASA's Center for High-Efficiency Electrical Technologies for Aircraft (<a href="https://techport.nasa.gov/view/96122">CHEETA</a>).
+                in particular on NASA's Center for High-Efficiency Electrical Technologies for Aircraft (<a href="https://techport.nasa.gov/view/96122" target="_blank">CHEETA</a>).
                 His research interests include applied aerodynamics, configuration aerodynamics, multi-disciplinary optimization (MDO), 
                 geometric parametrization methods, and aerodynamic tool development.</p>
             <h2>Education</h2>
@@ -97,9 +104,27 @@
         <div id="Research" class="tabContent">
             <h1>Research</h1>
 
+            <h2>Center for High-Efficiency Electrical Technologies for Aircraft (CHEETA)</h2>
+
+            <div class="row">
+                <div class="column">
+                    <figure>
+                        <img src="images/Walkaround.jpg" alt="CHEETA systems" style="width:100%;">
+                        <figcaption>System focuses for the NASA CHEETA project. Credits: Phil Ansell, UIUC</figcaption>
+                    </figure>
+                </div>
+                <div class="column">
+                    <figure>
+                        <img src="images/cheeta-rpi-meeting-2020.png" alt="CHEETA team RPI" style="width:100%;">
+                        <figcaption>Members of the CHEETA team at a meeting at Rensselaer Polytechnic Institute in February, 2020. Credits: Peter Xiao, UIUC</figcaption>
+                    </figure>
+                </div>
+            </div>
+
             <h2>Aeropropulsive Shape Optimization</h2>
             <p>To leverage the full aerodynamic benefit of propulsion integration, a coupled aerodynamics-propulsion system optimization can be performed.
-                In this study, both the aerodynamic drag and the mechanical flow power were used as performance characteristics to be minimized.
+                In this study, both the aerodynamic drag and the mechanical flow power were used as performance characteristics to be minimized. See [<a href="#Publications" data-component="link" data-source="inlineLink" data-type="internalLink" data-ordinal="1">2</a>]
+                for the original approach to this problem. A <em>Journal of Aircraft</em> article is in progress!
             </p>
 
             <div class="row">
@@ -128,6 +153,8 @@
                 <img src="images/pymead_capture1.PNG" alt="pymead" style="width:80%">
                 <figcaption>Screenshot of an aeropropulsive optimization running in pymead</figcaption>
             </figure>
+
+            <h2>Aeropropulsive Coupling: Experimental and Computational Analysis</h2>
             
         </div>
 
@@ -160,13 +187,37 @@
         <div id="Repositories" class="tabContent">
             <h1>Public Repositories</h1>
             <ul>
-                <li><a href="https://github.com/mlau154/pymead">Python Multi-Element Airfoil Design (pymead)</a>, an end-to-end airfoil system design, analysis, and optimization framework with an integrated GUI</li>
-                <li><a href="https://github.com/mlau154/mlau154.github.io">My personal (this) website</a></li>
+                <li><a href="https://github.com/mlau154/pymead" target="_blank">Python Multi-Element Airfoil Design (pymead)</a>, an end-to-end airfoil system design, analysis, and optimization framework with an integrated GUI</li>
+                <li><a href="https://github.com/mlau154/mlau154.github.io" target="_blank">My personal (this) website</a></li>
             </ul>
         </div>
 
         <div id="CV" class="tabContent">
-            <h2>This is my CV</h2>
+            <h1>Cirriculum Vitae</h1>
+            <h2>Skills</h2>
+            <ul>
+                <li><b>Programming</b>: Python, MATLAB, Fortran, C, C++, R, Julia, JavaScript, HTML, CSS</li>
+            </ul>
+        </div>
+
+        <div id="Personal" class="tabContent">
+            <h1>About Me (Personal)</h1>
+            <h2>Disc Golf</h2>
+
+            <div class="row">
+                <div class="column">
+                    <figure>
+                        <img src="images/illini_dgc_nationals_2023.jpg" alt="Illini DGC Nationals" style="width:100%;">
+                        <figcaption>Members of the Illini Disc Golf Club at the 2023 College Disc Golf National Championship in Marion, NC. Credits: <a href="https://www.instagram.com/illini_dgc/" target="_blank">@illini_dgc</a></figcaption>
+                    </figure>
+                </div>
+                <div class="column">
+                    <figure>
+                        <img src="images/illini_dgc_league.jpg" alt="Illini DGC League" style="width:100%;">
+                        <figcaption>Last Illini DGC league of spring 2023. Credits: <a href="https://www.instagram.com/illini_dgc/" target="_blank">@illini_dgc</a></figcaption>
+                    </figure>
+                </div>
+            </div>
         </div>
 
     </body>
@@ -190,5 +241,16 @@
         }
 
         document.getElementById("defaultOpen").click();
+
+        // $('a[href^="#"]').click(function() {
+        //     alert()
+        // });
+
+        $(document).ready(function(){
+            $('a[href^="#Publications"]').click(function(){
+                document.getElementById("tabPublications").click();
+            });
+        });
+
     </script>
 </html>
