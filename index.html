@@ -3,6 +3,7 @@
     <head>
         <title>Matt Lauer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <script language="JavaScript" type="text/javascript" src="./js/jquery-3.7.1.min.js"></script>
         <style>
 
@@ -16,6 +17,36 @@
                 padding: 10px 10px;
                 font-size: 20px;
                 width: 15%;
+            }
+
+            .tabLinkHamburger {
+                background-color: inherit;
+                color: red;
+                border: none;
+                outline: none;
+                display: block;
+                cursor: pointer;
+                padding: 10px 10px;
+                font-size: 20px;
+            }
+
+            .horizontalMenu {
+                display: inline;
+            }
+
+            .overlay{
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                /* width: 200px; */
+                height: 100%;
+                opacity: 0.5;
+                display: inline;
+                /* transition: opacity .35s, visibility .35s, height .35s; */
+                /* overflow: hidden; */
+                background: black;
+                color: aqua;
+                z-index: 3;
             }
 
             .tabLink:hover {
@@ -61,29 +92,102 @@
                 text-align: center;
             }
 
+            .menu-icon {
+                display: inline-block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 5;
+            }
+
+            .menu-icon > .line {
+                background-color: #292929;
+                height: 3px;
+                width: 30px;
+                max-width: 40px;
+                display: block;
+            }
+
+            .menu-icon > .line + .line {
+                margin-top: 8px;
+            }
+
+            .menu-icon:hover > .line {
+                background-color: aqua;
+            }
+
+            /* .ham-menu { display: inline-block; position: relative; margin: 5px 0; } /* margin = (width-height)/2 */
+            /* .ham-menu, .ham-menu::before, .ham-menu::after { width: 30px; height: 6px; border-radius: 7px; background-color: black; }
+            .ham-menu::before, .ham-menu::after { content: ""; display: block; position: absolute; }
+            .ham-menu::before { bottom: 130%; } .ham-menu::after { top: 130%; }
+            .ham-menu:hover {background-color: aqua;} */ */
+
             #Home
             #Research
             #Publications
             #Repositories
             #CV
 
-            html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif !important}
+            html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto"}
             html {padding-top: 10px;}
             body {max-width: 1200px; margin: 0 auto !important; float: none !important; text-align: center;}
             ul li {padding: 5px 0px;}
+
+            @media screen and (max-width: 1000px) {
+                .horizontalMenu {
+                    display: none;
+                }
+
+                .menu-icon {
+                    display: block;
+                }
+            }
+
+            @media screen and (min-width: 1000px) {
+                .overlay {
+                    display: none;
+                }
+
+                .menu-icon {
+                    display: none;
+                }
+            }
 
         </style>
     </head>
     <body>
 
-        <hr>
-        <button class="tabLink" onclick="openHeaderTab('Home', this)" id="defaultOpen">Home</button>
-        <button class="tabLink" onclick="openHeaderTab('Research', this)">Research</button>
-        <button class="tabLink" onclick="openHeaderTab('Publications', this)" id="tabPublications">Publications</button>
-        <button class="tabLink" onclick="openHeaderTab('Repositories', this)">Repositories</button>
-        <button class="tabLink" onclick="openHeaderTab('CV', this)">CV</button>
-        <button class="tabLink" onclick="openHeaderTab('Personal', this)">Personal</button>
-        <hr>
+        <!-- <span class="ham-menu"></span> -->
+        <!-- <div class="menu-icon">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div> -->
+        <button class="menu-icon" onclick="toggleOverlay()">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+        <div class="overlay">
+            <p style="margin-bottom: 30px;"></p>
+            <button class="tabLinkHamburger" onclick="openHeaderTab('Home', this)" id="defaultOpen">Home</button>
+            <button class="tabLinkHamburger" onclick="openHeaderTab('Research', this)">Research</button>
+            <button class="tabLinkHamburger" onclick="openHeaderTab('Publications', this)" id="tabPublications">Publications</button>
+            <button class="tabLinkHamburger" onclick="openHeaderTab('Repositories', this)">Repositories</button>
+            <button class="tabLinkHamburger" onclick="openHeaderTab('CV', this)">CV</button>
+            <button class="tabLinkHamburger" onclick="openHeaderTab('Personal', this)">Personal</button>
+        </div>
+        <div class="horizontalMenu">
+            <hr>
+            <button class="tabLink" onclick="openHeaderTab('Home', this)" id="defaultOpen">Home</button>
+            <button class="tabLink" onclick="openHeaderTab('Research', this)">Research</button>
+            <button class="tabLink" onclick="openHeaderTab('Publications', this)" id="tabPublications">Publications</button>
+            <button class="tabLink" onclick="openHeaderTab('Repositories', this)">Repositories</button>
+            <button class="tabLink" onclick="openHeaderTab('CV', this)">CV</button>
+            <button class="tabLink" onclick="openHeaderTab('Personal', this)">Personal</button>
+            <hr>
+        </div>
+        
 
         <div id="Home" class="tabContent">
             <h1>Biography</h1>
@@ -193,7 +297,7 @@
         </div>
 
         <div id="CV" class="tabContent">
-            <h1>Cirriculum Vitae</h1>
+            <h1>Curriculum Vitae</h1>
             <h2>Skills</h2>
             <ul>
                 <li><b>Programming</b>: Python, MATLAB, Fortran, C, C++, R, Julia, JavaScript, HTML, CSS</li>
@@ -238,6 +342,19 @@
 
             document.getElementById(headerName).style.display = "block";
             element.style.fontWeight = "bold";
+
+            if (window.innerWidth <= 1000) {
+                toggleOverlay()
+            }
+        }
+
+        function toggleOverlay() {
+            overlay = document.getElementsByClassName("overlay")[0]
+            if (overlay.style.display == "inline" || overlay.style.display == ""){
+                overlay.style.display = "none";
+            } else {
+                overlay.style.display = "inline";
+            }
         }
 
         document.getElementById("defaultOpen").click();
