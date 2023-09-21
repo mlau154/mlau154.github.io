@@ -8,30 +8,39 @@
         <style>
 
             .tabLink {
-                background-color: white;
-                color: black;
+                background: none;
+                color: white;
                 border: none;
                 outline: none;
-                transition: background-color 0.6s ease-out;
+                /* transition: background-color 0.6s ease-out; */
                 cursor: pointer;
                 padding: 10px 10px;
                 font-size: 20px;
+                font-family: inherit;
                 width: 15%;
             }
 
             .tabLinkHamburger {
-                background-color: inherit;
-                color: red;
+                color: white;
+                background: none;
                 border: none;
                 outline: none;
                 display: block;
                 cursor: pointer;
                 padding: 10px 10px;
                 font-size: 20px;
+                font-family: inherit;
+            }
+
+            .tabLinkHamburger:hover {
+                background-position: right center;
             }
 
             .horizontalMenu {
                 display: inline;
+                background-image: linear-gradient(to right, black , rgb(17, 178, 228));
+                padding: 30px;
+                background-clip: padding box;
             }
 
             .overlay{
@@ -40,11 +49,12 @@
                 left: 0px;
                 /* width: 200px; */
                 height: 100%;
-                opacity: 0.5;
+                opacity: 0.9;
                 display: inline;
                 /* transition: opacity .35s, visibility .35s, height .35s; */
                 /* overflow: hidden; */
-                background: black;
+                background: gray;
+                background-image: linear-gradient(to right, black , rgb(17, 178, 228));
                 color: aqua;
                 z-index: 3;
             }
@@ -93,15 +103,17 @@
             }
 
             .menu-icon {
+                background-color: inherit;
                 display: inline-block;
                 position: fixed;
+                border: none;
                 top: 0;
                 left: 0;
                 z-index: 5;
             }
 
             .menu-icon > .line {
-                background-color: #292929;
+                background-color: white;
                 height: 3px;
                 width: 30px;
                 max-width: 40px;
@@ -113,7 +125,7 @@
             }
 
             .menu-icon:hover > .line {
-                background-color: aqua;
+                background-color: orangered;
             }
 
             /* .ham-menu { display: inline-block; position: relative; margin: 5px 0; } /* margin = (width-height)/2 */
@@ -128,9 +140,9 @@
             #Repositories
             #CV
 
-            html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto"}
+            /* html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif} */
             html {padding-top: 10px;}
-            body {max-width: 1200px; margin: 0 auto !important; float: none !important; text-align: center;}
+            body {max-width: 1200px; margin: 0 auto !important; float: none !important; text-align: center; font-family: Roboto; background: linear-gradient(to right, gray, white);}
             ul li {padding: 5px 0px;}
 
             @media screen and (max-width: 1000px) {
@@ -178,14 +190,12 @@
             <button class="tabLinkHamburger" onclick="openHeaderTab('Personal', this)">Personal</button>
         </div>
         <div class="horizontalMenu">
-            <hr>
             <button class="tabLink" onclick="openHeaderTab('Home', this)" id="defaultOpen">Home</button>
             <button class="tabLink" onclick="openHeaderTab('Research', this)">Research</button>
             <button class="tabLink" onclick="openHeaderTab('Publications', this)" id="tabPublications">Publications</button>
             <button class="tabLink" onclick="openHeaderTab('Repositories', this)">Repositories</button>
             <button class="tabLink" onclick="openHeaderTab('CV', this)">CV</button>
             <button class="tabLink" onclick="openHeaderTab('Personal', this)">Personal</button>
-            <hr>
         </div>
         
 
