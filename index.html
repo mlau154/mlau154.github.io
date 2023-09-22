@@ -10,7 +10,8 @@
             .tabLink {
                 background: none;
                 color: white;
-                border: none;
+                border-bottom-style: solid;
+                border-bottom-width: 3px;
                 outline: none;
                 /* transition: background-color 0.6s ease-out; */
                 cursor: pointer;
@@ -38,9 +39,10 @@
 
             .horizontalMenu {
                 display: inline;
-                background-image: linear-gradient(to right, black , rgb(17, 178, 228));
+                background-image: linear-gradient(to right, rgb(44, 114, 136) , rgb(17, 178, 228));
                 padding: 30px;
                 background-clip: padding box;
+                box-shadow: 2px 2px;
             }
 
             .overlay{
@@ -54,13 +56,13 @@
                 /* transition: opacity .35s, visibility .35s, height .35s; */
                 /* overflow: hidden; */
                 background: gray;
-                background-image: linear-gradient(to right, black , rgb(17, 178, 228));
+                background-image: linear-gradient(to right, rgb(44, 114, 136) , rgb(17, 178, 228));
                 color: aqua;
                 z-index: 3;
             }
 
             .tabLink:hover {
-                background-color: burlywood;
+                border-bottom-width: 10px;
             }
 
             .tabContent {
@@ -68,6 +70,11 @@
                 display: none;
                 padding: 30px 50px;
                 text-align: left;
+            }
+
+            .headerSpace {
+                background: none;
+                margin-top: 30px;
             }
 
             .tabContent:target {
@@ -142,7 +149,7 @@
 
             /* html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif} */
             html {padding-top: 10px;}
-            body {max-width: 1200px; margin: 0 auto !important; float: none !important; text-align: center; font-family: Roboto; background: linear-gradient(to right, gray, white);}
+            body {max-width: 1200px; margin: 0 auto !important; float: none !important; text-align: center; font-family: Roboto; background: linear-gradient(to right, lightgray, white);}
             ul li {padding: 5px 0px;}
 
             @media screen and (max-width: 1000px) {
@@ -151,6 +158,14 @@
                 }
 
                 .menu-icon {
+                    display: block;
+                }
+
+                .headerSpace {
+                    margin-top: -30px;
+                }
+
+                .overlay {
                     display: block;
                 }
             }
@@ -162,6 +177,10 @@
 
                 .menu-icon {
                     display: none;
+                }
+
+                .headerSpace {
+                    margin-top: 30px;
                 }
             }
 
@@ -189,6 +208,7 @@
             <button class="tabLinkHamburger" onclick="openHeaderTab('CV', this)">CV</button>
             <button class="tabLinkHamburger" onclick="openHeaderTab('Personal', this)">Personal</button>
         </div>
+        <div class="headerSpace"><p></p></div>
         <div class="horizontalMenu">
             <button class="tabLink" onclick="openHeaderTab('Home', this)" id="defaultOpen">Home</button>
             <button class="tabLink" onclick="openHeaderTab('Research', this)">Research</button>
